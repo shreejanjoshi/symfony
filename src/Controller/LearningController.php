@@ -20,7 +20,7 @@ class LearningController extends AbstractController
     // }
 
     #[Route('/about', name: 'about')]
-    public function aboutMe(): Response
+    public function about(): Response
     {
         return $this->render('learning/about.html.twig', [
             'name' => 'BeCode',
@@ -28,7 +28,7 @@ class LearningController extends AbstractController
     }
 
     /** 
-     * @Route("/", name="showMyName")
+     * @Route("/", name="showName")
      * @param SessionInterface $session
      * @return Response
      */
@@ -45,18 +45,16 @@ class LearningController extends AbstractController
     }
 
     /** 
-     * @Route("/changeName", name="changeMyName", methods={"POST"})
+     * @Route("/changeName", name="changeName", methods={"POST"})
      * @param Request $request
      * @param SessionInterface $session
      * @return RedirectResponse
      */
     public function changeName(SessionInterface $session, Request $request): RedirectResponse
     {
-        $name = $request->request->name;
+        $name = $request->request->get('name');
         $session->set('name', $name);
 
-        return $this->render('learning/showName.html.twig', [
-            'name' => 'BeCode',
-        ]);
+        return $this->redirectToRoute('showName');
     }
 }
