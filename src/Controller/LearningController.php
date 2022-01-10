@@ -15,4 +15,12 @@ class LearningController extends AbstractController
             'controller_name' => 'LearningController',
         ]);
     }
+
+    #[Route('/about', name: 'about')]
+    public function about(): Response
+    {
+        return $this->render('about/index.html.twig', [
+            'controller_name' => 'LearningController',
+        ]);
+    }
 }
