@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DependencyController!{% endblock %}
+
+{% block body %}
+    <br>
+    <div class="container">
+        <h2>{{ output }}</h2>
+        <form action="{{ path('dependency') }}" method="post">
+            <input type="text" name="input">
+            <select name="dropdown">
+                <option value="capitalize">Capitalize</option>
+                <option value="dashes">Dashes</option>
+            </select>
+            <br><br>
+            <input type="submit" name="submit" value="submit">
+        </form>
+    </div>
+{% endblock %}
