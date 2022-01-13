@@ -21,9 +21,9 @@ class DependencyController extends AbstractController
         $logs = new Logs();
         $output = "";
 
-        if ($request->isMethod("post")){
+        if ($request->isMethod("POST")){
             //saved input file
-            $input = $request->request->get('input');
+            $output = $request->request->get('output');
             //saved dropdown value
             $dropdown = $request->request->get('dropdown');
 

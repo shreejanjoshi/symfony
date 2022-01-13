@@ -2,14 +2,14 @@
 
 namespace App\Services;
 
-class Logs implements Transform
+class Logs
 {
 
-    public function transform(string $string): string
+    public function logs(string $output)
     {
         // TODO: Implement transform() method.
-        $newMsg = "/n";
+        $output .= "/n";
         $file = "log.info";
-        file_put_contents($file, $string.$newMsg, FILE_APPEND | LOCK_EX);
+        file_put_contents($file, $output, FILE_APPEND);
     }
 }

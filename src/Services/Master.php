@@ -15,12 +15,12 @@ class Master
         $this->logs = $logs;
     }
 
-    public function transform(string $string): string
+    public function transform(string $output)
     {
-        return $this->transform->transform($string);
+        return $this->transform->transform($output);
     }
 
-    public function logs(string $string){
-        return $this->logs->logs($string);
+    public function logs(string $output){
+        return $this->logs->logs($output);
     }
 }

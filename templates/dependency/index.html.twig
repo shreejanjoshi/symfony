@@ -5,9 +5,10 @@
 {% block body %}
     <br>
     <div class="container">
-        <h2>{{ output }}</h2>
-        <form action="{{ path('dependency') }}" method="post">
-            <input type="text" name="input">
+        <br>
+        {{output}}
+        <form action="{{path('dependency')}}" method="post">
+            message: <input type="text" name="output">
             <select name="dropdown">
                 <option value="capitalize">Capitalize</option>
                 <option value="dashes">Dashes</option>
