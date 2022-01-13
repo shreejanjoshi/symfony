@@ -5,11 +5,13 @@
 {% block body %}
 <br>
 <div class="container">
-    <h3>Hello {{name}}</h3>
+    <h3>Hello {{name|title}}</h3>
     <form action="{{ path('changeName') }}" method="post">
         <input type="text" name="name">
         <input type="submit" name="submit" value="submit">
     </form>
-    <a href="{{path('about')}}">More Info</a>
+    <br>
+    <br>
+    {{generateQuote()}}
 </div>
 {% endblock %}

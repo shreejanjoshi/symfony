@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,18 +20,32 @@ class LearningController extends AbstractController
     //     ]);
     // }
 
-    #[Route('/about', name: 'about')]
-    public function about(): Response
+    /**
+    * @Route("/about", name="about")
+    * @param SessionInterface $session
+    * @return RedirectResponse
+    */
+    public function about(SessionInterface $session): Response
     {
-        return $this->render('learning/about.html.twig', [
-            'name' => 'BeCode',
-        ]);
+        if ($session->get('name')) {
+            $name = $session->get('name');
+            $date = new DateTime();
+            $response = $this->render('learning/about.html.twig', [
+                'name' => $name,
+                'date' => $date,
+            ]);
+        }
+        else {
+            $response = $this->forward('App/Controller/LearningController::showName');
+            
+        }
+        return $response;
     }
 
     /** 
      * @Route("/", name="showName")
      * @param SessionInterface $session
-     * @return Response
+     * @return RedirectResponse
      */
     public function showName(SessionInterface $session): Response
     {
@@ -45,8 +60,7 @@ class LearningController extends AbstractController
     }
 
     /** 
-     * @Route("/changeName", name="changeName", methods={"POST"})
-     * @param Request $request
+     * @Route("/changeName", name="changeName")
      * @param SessionInterface $session
      * @return RedirectResponse
      */

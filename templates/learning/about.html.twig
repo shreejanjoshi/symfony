@@ -5,7 +5,20 @@
 {% block body %}
 <br>
 <div class="container">
-    <h1>hi {{name}}</h1>
-    <a href="{{path('showName')}}">My page</a>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{path('showName')}}">Home</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{path('about')}}">About</a>
+                
+                Europe: {{ date('now')|format_date(pattern="d/M/y") }}<br><br>
+                America: {{ date('now')|format_date(pattern="M/d/y") }}<br><br>
+                China & Japan: {{ date('now')|format_date(pattern="y/M/d") }}
+            </div>   
 </div>
+{% endblock %}
+
+{% block body %}
+
+    <h1>Hello, its me {{name}}! </h1>
+    {{generateQuote()}}
+
 {% endblock %}

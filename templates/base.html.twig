@@ -17,6 +17,18 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar-->
+            <div class="border-end bg-white" id="sidebar-wrapper">
+                <div class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{path('showName')}}">Home</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{path('about')}}">About</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{path('showName')}}">capitalize</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{path('dependency')}}">DependencyInjection</a>
+                </div>     
+            </div>
+    </div>
+        {% endblock %}
     </body>
 </html>
